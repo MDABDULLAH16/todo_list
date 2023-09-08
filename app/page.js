@@ -18,6 +18,23 @@ const page = () => {
 
    let renderTask = <h2>No task abailable</h2>
 
+    if (mainTask.length>0) {
+        renderTask = mainTask.map((t,i)=>{
+        return(
+          <ol>
+            <li></li>
+            
+            <div className='flex justify-between'>
+              <h3 className='text-2xl font-semibold'>{t.title}</h3>
+            <h4 className='text-2xl font-semibold'>{t.desc}</h4>
+            </div>
+          
+          </ol>
+        )
+
+      })
+    }
+
   return (
     <>
     <h1 className='bg-black text-white p-5 text-2xl font-bold text-center'>Abdullah's ToDo List</h1>
@@ -40,6 +57,7 @@ const page = () => {
     <hr></hr>
     <div className='bg-slate-200 p-8'>
         {renderTask}
+         
     </div>
     </>
   )
