@@ -16,20 +16,28 @@ const page = () => {
 
    }
 
+   const deleteHandler =(i)=>{
+      let copyTask =[...mainTask]
+      copyTask.splice(i,1)
+      setmainTask(copyTask)
+   }
+
+
    let renderTask = <h2>No task abailable</h2>
 
-    if (mainTask.length>0) {
+    if (mainTask.length > 0) {
         renderTask = mainTask.map((t,i)=>{
         return(
-          <ol>
-            <li></li>
-            
-            <div className='flex justify-between'>
+          <li key={i} className='flex justify-between items-center py-1'>                
+            <div className='flex justify-between items-center  w-2/3'>
               <h3 className='text-2xl font-semibold'>{t.title}</h3>
-            <h4 className='text-2xl font-semibold'>{t.desc}</h4>
+            <h4 className='text-2xl font-normal'>{t.desc}</h4>
             </div>
+            <button
+            onClick={()=>{deleteHandler(i)}}
+            className='bg-red-600 text-white px-5 py-2 border rounded font-semibold'>delete</button>
           
-          </ol>
+          </li>
         )
 
       })
